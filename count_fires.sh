@@ -8,10 +8,10 @@ curl -o calfire.csv https://gis.data.cnra.ca.gov/datasets/CALFIRE-Forestry::rece
 # print out the range of years found -- you may need to go in and edit the file
 # cut -d, ....
 nano calfire.csv #deleted spacings between two lines
-cut -d, -f2 calfire.csv | sort
-
-MINYEAR=cut -d, -f2 calfire.csv | sort | head -n 1
-MAXYEAR=cut -d, -f2 calfire.csv | sort | tail -n 2 #header
+cut -d, -f2 calfire.csv | sort | head -n 1
+cut -d, -f2 calfire.csv | sort | tail -n 2 #header
+MINYEAR=2017
+MAXTYEAR=2021
 # write code to set these variables with the smallest and largest years
 echo "This report has the years: $MINYEAR-$MAXYEAR"
 # if you have problems the CSV file already part of this repository so you can use 'calfires_2021.csv'
