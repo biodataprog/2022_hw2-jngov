@@ -25,21 +25,28 @@ echo "Total number of files: $TOTALFILECOUNT"
 # print out the number of fire in each year
 cut -d, -f2 calfire.csv | tail -n +2 | uniq -c
 echo "Number of fires in each year follows:"
-echo "Number of fires in each year follows: $(cut -d, -f2 calfire.csv | tail -n +2 | uniq -c)"
+echo "Number of fires in each year follows: $(cut -d, -f2 calfire.csv | tail -n +2 | sort | uniq -c)"
 
 awk -F, '{print $13,$6}' calfire.csv | sort -n | tail -n 1
 LARGEST="August Complex"
 LARGESTACRES="1032699.6"
 # print out the name of the largest file use the GIS_ACRES and report the number of acres
 echo "Largest fire was $LARGEST and burned $LARGESTACRES"
-F13 acre
-F6 name
 
-
-
+for YEAR in $(seq 2017 2021)
+do
+TOTAL=$(grep $YEAR calfires_2021.csv | awk -F',' '{sum+=$13;} END{print sum;}')
+ echo "In Year $YEAR, Total was $TOTAL"
+ done
 # print out the years - change the code in $(echo 1990) to print out the years (hint - how did you get MINYEAR and MAXYEAR?
 for YEAR in $(echo 1990)
 do
 #      TOTAL=$(grep ... | awk ...)
       echo "In Year $YEAR, Total was $TOTAL"
 done
+
+for YEAR in $(seq 2017 2021)
+do
+TOTAL=$(grep $YEAR calfires_2021.csv | awk -F',' '{sum+=$13;} END{print sum;}')
+ echo "In Year $YEAR, Total was $TOTAL"
+ done
