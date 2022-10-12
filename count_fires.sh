@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
-curl -o calfire.csv https://gis.data.cnra.ca.gov/datasets/CALFIRE-Forestry::recent-large-fire-perimeters-5000-acres.csv?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D
-nano calfire.csv #deleted spacings between two lines
+#curl -o calfire.csv https://gis.data.cnra.ca.gov/datasets/CALFIRE-Forestry::recent-large-fire-perimeters-5000-acres.csv?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D
+#nano calfire.csv #deleted spacings between two lines
 
 cut -d, -f2 calfire.csv | sort | head -n 1
 cut -d, -f2 calfire.csv | tail -n +2 | sort | tail -n -1
